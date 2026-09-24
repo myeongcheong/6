@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Character Archive</title>
+
+<style>
+
+/* =========================================================
+   🌼 기본 설정
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Pretendard", "Noto Sans KR", sans-serif;
+    background:
+        radial-gradient(circle at 15% 15%, rgba(255,255,255,0.8), transparent 25%),
+        radial-gradient(circle at 85% 25%, rgba(255,221,153,0.45), transparent 25%),
+        radial-gradient(circle at 50% 90%, rgba(255,190,210,0.35), transparent 30%),
+        #fff4bd;
+
+    color: #493c2c;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   ✨ 배경 장식
+========================================================= */
+
+.background-sparkle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 0;
+    color: #ffffff;
+    animation: sparkle 3s infinite ease-in-out;
+}
+
+.s1 { top: 12%; left: 8%; font-size: 24px; }
+.s2 { top: 30%; right: 10%; font-size: 18px; animation-delay: 1s; }
+.s3 { top: 65%; left: 12%; font-size: 16px; animation-delay: 2s; }
+.s4 { top: 82%; right: 15%; font-size: 25px; animation-delay: .5s; }
+
+@keyframes sparkle {
+    0%,100% {
+        opacity: .25;
+        transform: scale(.8) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(20deg);
+    }
+}
+
+
+/* =========================================================
+   👻 떠다니는 유령
+========================================================= */
+
+.ghost {
+    position: fixed;
+    z-index: 2;
+    pointer-events: none;
+    font-size: 38px;
+    opacity: .75;
+    animation: floatGhost 8s infinite ease-in-out;
+}
+
+.ghost1 {
+    left: 4%;
+    top: 20%;
+}
+
+.ghost2 {
+    right: 5%;
+    top: 55%;
+    font-size: 30px;
+    animation-delay: 3s;
+}
+
+.ghost3 {
+    left: 80%;
+    top: 10%;
+    font-size: 22px;
+    animation-delay: 1.5s;
+}
+
+@keyframes floatGhost {
+
+    0% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-35px) rotate(7deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+}
+
+
+/* =========================================================
+   🌼 전체 컨테이너
+========================================================= */
+
+.container {
+    position: relative;
+    z-index: 3;
+
+    width: min(1100px, 90%);
+    margin: auto;
+}
+
+
+/* =========================================================
+   🎀 메인 헤더
+========================================================= */
+
+.hero {
+    min-height: 90vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    position: relative;
+}
+
+.hero-small {
+    font-size: 14px;
+    letter-spacing: 5px;
+    color: #b88b38;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 8vw, 90px);
+    font-weight: 900;
+
+    color: #493c2c;
+
+    text-shadow:
+        4px 4px 0 #fff,
+        7px 7px 0 #f4c96b;
+
+    letter-spacing: -4px;
+}
+
+.hero-subtitle {
+    margin-top: 20px;
+
+    font-size: 16px;
+    color: #806d51;
+    letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   🎀 귀여운 장식
+========================================================= */
+
+.ribbon {
+    display: inline-block;
+
+    margin-top: 35px;
+    padding: 10px 24px;
+
+    background: #ff9fba;
+    color: white;
+
+    border-radius: 30px;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    box-shadow:
+        0 7px 0 #df7896,
+        0 10px 20px rgba(170,100,100,.15);
+}
+
+
+/* =========================================================
+   📌 섹션
+========================================================= */
+
+section {
+    padding: 100px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title span {
+    display: block;
+
+    font-size: 12px;
+    letter-spacing: 4px;
+
+    color: #c49a4b;
+
+    margin-bottom: 10px;
+}
+
+.section-title h2 {
+    font-size: 38px;
+    color: #4a3a27;
+}
+
+
+/* =========================================================
+   📝 캐릭터 소개 카드
+========================================================= */
+
+.profile-card {
+
+    background: rgba(255,255,255,.72);
+
+    border: 2px solid rgba(255,255,255,.9);
+
+    border-radius: 35px;
+
+    padding: 45px;
+
+    box-shadow:
+        0 20px 50px rgba(130,100,40,.12);
+
+    backdrop-filter: blur(10px);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.profile-card::before {
+    content: "✦";
+
+    position: absolute;
+    right: 35px;
+    top: 20px;
+
+    font-size: 40px;
+    color: #ffd36b;
+
+    transform: rotate(15deg);
+}
+
+.profile-name {
+    font-size: 42px;
+    font-weight: 900;
+
+    color: #4b3b2b;
+
+    margin-bottom: 10px;
+}
+
+.profile-description {
+    color: #87755c;
+    line-height: 2;
+    margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   📋 프로필 정보
+========================================================= */
+
+.info-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+.info-box {
+
+    background: #fff9df;
+
+    border-radius: 20px;
+
+    padding: 20px;
+
+    border: 1px dashed #e6c879;
+}
+
+.info-label {
+
+    font-size: 11px;
+
+    color: #c09848;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+}
+
+.info-text {
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    color: #51422e;
+}
+
+
+/* =========================================================
+   🌸 두 개의 카드
+========================================================= */
+
+.card-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 25px;
+}
+
+.info-card {
+
+    background: rgba(255,255,255,.75);
+
+    border-radius: 30px;
+
+    padding: 35px;
+
+    box-shadow:
+        0 15px 35px rgba(120,90,30,.1);
+
+    border: 2px solid rgba(255,255,255,.8);
+
+    transition: .3s;
+}
+
+.info-card:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 20px 40px rgba(120,90,30,.15);
+}
+
+.card-icon {
+
+    font-size: 32px;
+
+    margin-bottom: 15px;
+}
+
+.info-card h3 {
+
+    font-size: 21px;
+
+    margin-bottom: 15px;
+
+    color: #493b29;
+}
+
+.info-card p {
+
+    line-height: 2;
+
+    color: #75654f;
+}
+
+
+/* =========================================================
+   💕 관계
+========================================================= */
+
+.relationship {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.8),
+            rgba(255,232,170,.75)
+        );
+
+    border-radius: 40px;
+
+    padding: 55px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 50px rgba(120,90,30,.12);
+}
+
+.relationship::after {
+
+    content: "♡";
+
+    position: absolute;
+
+    right: 35px;
+    bottom: 15px;
+
+    font-size: 100px;
+
+    color: rgba(255,150,170,.25);
+
+}
+
+.relationship-title {
+
+    font-size: 28px;
+
+    font-weight: 900;
+
+    margin-bottom: 20px;
+}
+
+.relationship-text {
+
+    line-height: 2.1;
+
+    color: #66553d;
+
+    max-width: 750px;
+}
+
+
+/* =========================================================
+   🍰 좋아하는 것 / 싫어하는 것
+========================================================= */
+
+.like-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 25px;
+}
+
+.like-box {
+
+    padding: 35px;
+
+    border-radius: 30px;
+
+    background: white;
+
+    box-shadow:
+        0 15px 35px rgba(100,80,40,.1);
+}
+
+.like-box.like {
+
+    border-top: 7px solid #ffb7c9;
+}
+
+.like-box.dislike {
+
+    border-top: 7px solid #b8d9ff;
+}
+
+.like-box h3 {
+
+    font-size: 22px;
+
+    margin-bottom: 20px;
+}
+
+.like-list {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+.tag {
+
+    padding: 8px 15px;
+
+    background: #fff4c9;
+
+    border-radius: 50px;
+
+    font-size: 13px;
+}
+
+.like-box.dislike .tag {
+
+    background: #edf5ff;
+}
+
+
+/* =========================================================
+   📖 특징
+========================================================= */
+
+.feature-list {
+
+    display: grid;
+
+    gap: 15px;
+}
+
+.feature {
+
+    background: rgba(255,255,255,.8);
+
+    padding: 22px 28px;
+
+    border-radius: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    box-shadow:
+        0 8px 20px rgba(120,90,40,.08);
+}
+
+.feature-number {
+
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: #ffd36b;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   ✨ 마지막 문구
+========================================================= */
+
+.final {
+
+    min-height: 60vh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.final-box {
+
+    padding: 70px 40px;
+
+    width: 100%;
+
+    background: rgba(255,255,255,.65);
+
+    border-radius: 40px;
+
+    border: 2px solid white;
+
+    box-shadow:
+        0 20px 50px rgba(120,90,30,.1);
+}
+
+.final-box h2 {
+
+    font-size: 36px;
+
+    margin-bottom: 20px;
+}
+
+.final-box p {
+
+    color: #796950;
+
+    line-height: 2;
+}
+
+
+/* =========================================================
+   🌼 FOOTER
+========================================================= */
+
+footer {
+
+    padding: 50px 0;
+
+    text-align: center;
+
+    font-size: 12px;
+
+    color: #a5906c;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   📱 모바일
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .hero {
+        min-height: 75vh;
+    }
+
+    .hero h1 {
+        letter-spacing: -2px;
+    }
+
+    section {
+        padding: 70px 0;
+    }
+
+    .profile-card {
+        padding: 30px 22px;
+    }
+
+    .profile-name {
+        font-size: 32px;
+    }
+
+    .info-grid,
+    .card-grid,
+    .like-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .relationship {
+        padding: 35px 25px;
+    }
+
+    .ghost {
+        font-size: 25px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     👻 배경 유령
+====================================================== -->
+
+<div class="ghost ghost1">👻</div>
+<div class="ghost ghost2">👻</div>
+<div class="ghost ghost3">👻</div>
+
+
+<!-- ✨ 반짝이 -->
+
+<div class="background-sparkle s1">✦</div>
+<div class="background-sparkle s2">✧</div>
+<div class="background-sparkle s3">✦</div>
+<div class="background-sparkle s4">✧</div>
+
+
+
+<div class="container">
+
+
+<!-- =====================================================
+     🌼 INTRO
+====================================================== -->
+
+<header class="hero">
+
+    <div class="hero-small">
+        CHARACTER ARCHIVE
+    </div>
+
+    <!-- ✏️ 제목 -->
+
+    <h1>
+        캐릭터 이름
+    </h1>
+
+    <!-- ✏️ 한줄 설명 -->
+
+    <p class="hero-subtitle">
+        당신이 알아가게 될 조금 특별한 사람
+    </p>
+
+    <div class="ribbon">
+        ✿ CHARACTER PROFILE ✿
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     📝 CHARACTER PROFILE
+====================================================== -->
+
+<section>
+
+    <div class="section-title">
+
+        <span>01 · PROFILE</span>
+
+        <h2>
+            CHARACTER
+        </h2>
+
+    </div>
+
+
+    <div class="profile-card">
+
+        <!-- ✏️ 캐릭터 이름 -->
+
+        <div class="profile-name">
+            캐릭터 이름
+        </div>
+
+        <!-- ✏️ 캐릭터 설명 -->
+
+        <p class="profile-description">
+
+            여기에 캐릭터에 대한 전체적인 설명을 적어주세요.
+            캐릭터의 분위기나 첫인상, 다른 사람들에게 어떻게 보이는지 등을
+            자유롭게 작성하면 됩니다.
+
+        </p>
+
+
+        <div class="info-grid">
+
+
+            <div class="info-box">
+
+                <div class="info-label">
+                    NAME
+                </div>
+
+                <div class="info-text">
+                    캐릭터 이름
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="info-label">
+                    AGE
+                </div>
+
+                <div class="info-text">
+                    00세
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="info-label">
+                    GENDER
+                </div>
+
+                <div class="info-text">
+                    성별
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="info-label">
+                    HEIGHT
+                </div>
+
+                <div class="info-text">
+                    000cm
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="info-label">
+                    BIRTHDAY
+                </div>
+
+                <div class="info-text">
+                    00월 00일
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="info-label">
+                    MBTI
+                </div>
+
+                <div class="info-text">
+                    XXXX
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     🌸 APPEARANCE / PERSONALITY
+====================================================== -->
+
+<section>
+
+    <div class="section-title">
+
+        <span>02 · CHARACTER</span>
+
+        <h2>
+            ABOUT
+        </h2>
+
+    </div>
+
+
+    <div class="card-grid">
+
+
+        <!-- 외형 -->
+
+        <div class="info-card">
+
+            <div class="card-icon">
+                🎀
+            </div>
+
+            <h3>
+                외형
+            </h3>
+
+            <p>
+
+                캐릭터의 머리카락, 눈동자,
+                체형, 분위기, 평소 옷차림 등을
+                자유롭게 작성해주세요.
+
+            </p>
+
+        </div>
+
+
+        <!-- 성격 -->
+
+        <div class="info-card">
+
+            <div class="card-icon">
+                🌷
+            </div>
+
+            <h3>
+                성격
+            </h3>
+
+            <p>
+
+                캐릭터의 성격을 작성해주세요.
+                평소 행동이나 말투,
+                다른 사람을 대하는 방식 등을
+                적어도 좋습니다.
+
+            </p>
+
+        </div>
+
+
+        <!-- 말투 -->
+
+        <div class="info-card">
+
+            <div class="card-icon">
+                💬
+            </div>
+
+            <h3>
+                말투
+            </h3>
+
+            <p>
+
+                캐릭터가 평소 사용하는 말투,
+                자주 사용하는 표현,
+                특별한 말버릇 등을 작성해주세요.
+
+            </p>
+
+        </div>
+
+
+        <!-- 특징 -->
+
+        <div class="info-card">
+
+            <div class="card-icon">
+                ⭐
+            </div>
+
+            <h3>
+                특징
+            </h3>
+
+            <p>
+
+                캐릭터만의 특별한 특징이나
+                습관, 버릇, 행동 등을
+                자유롭게 작성해주세요.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     💕 RELATIONSHIP
+====================================================== -->
+
+<section>
+
+    <div class="section-title">
+
+        <span>03 · RELATIONSHIP</span>
+
+        <h2>
+            RELATIONSHIP
+        </h2>
+
+    </div>
+
+
+    <div class="relationship">
+
+        <div class="relationship-title">
+
+            캐릭터와 당신의 관계
+
+        </div>
+
+        <p class="relationship-text">
+
+            이곳에 캐릭터와 {{user}}의 관계를 작성해주세요.
+            두 사람이 어떻게 처음 만났는지,
+            현재 서로를 어떻게 생각하고 있는지,
+            둘 사이에 어떤 사건이 있었는지 등을
+            자유롭게 작성할 수 있습니다.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     🍰 LIKE / DISLIKE
+====================================================== -->
+
+<section>
+
+    <div class="section-title">
+
+        <span>04 · TASTE</span>
+
+        <h2>
+            LIKE & DISLIKE
+        </h2>
+
+    </div>
+
+
+    <div class="like-grid">
+
+
+        <!-- 좋아하는 것 -->
+
+        <div class="like-box like">
+
+            <h3>
+                💗 좋아하는 것
+            </h3>
+
+            <div class="like-list">
+
+                <span class="tag">좋아하는 것 01</span>
+                <span class="tag">좋아하는 것 02</span>
+                <span class="tag">좋아하는 것 03</span>
+                <span class="tag">좋아하는 것 04</span>
+                <span class="tag">좋아하는 것 05</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- 싫어하는 것 -->
+
+        <div class="like-box dislike">
+
+            <h3>
+                💙 싫어하는 것
+            </h3>
+
+            <div class="like-list">
+
+                <span class="tag">싫어하는 것 01</span>
+                <span class="tag">싫어하는 것 02</span>
+                <span class="tag">싫어하는 것 03</span>
+                <span class="tag">싫어하는 것 04</span>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ⭐ SPECIAL FEATURES
+====================================================== -->
+
+<section>
+
+    <div class="section-title">
+
+        <span>05 · SPECIAL</span>
+
+        <h2>
+            SPECIAL FEATURES
+        </h2>
+
+    </div>
+
+
+    <div class="feature-list">
+
+
+        <div class="feature">
+
+            <div class="feature-number">
+                01
+            </div>
+
+            <p>
+                캐릭터의 특별한 특징을 작성해주세요.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-number">
+                02
+            </div>
+
+            <p>
+                캐릭터의 습관이나 비밀을 작성해주세요.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-number">
+                03
+            </div>
+
+            <p>
+                다른 사람들은 모르는 설정을 작성해주세요.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-number">
+                04
+            </div>
+
+            <p>
+                캐릭터와 관련된 재미있는 사실을 작성해주세요.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     📖 STORY
+====================================================== -->
+
+<section>
+
+    <div class="section-title">
+
+        <span>06 · STORY</span>
+
+        <h2>
+            STORY
+        </h2>
+
+    </div>
+
+
+    <div class="profile-card">
+
+        <p class="profile-description">
+
+            이곳에는 캐릭터의 과거 이야기,
+            현재 상황, 세계관 설정,
+            혹은 {{user}}와의 이야기를
+            길게 작성할 수 있습니다.
+
+            <br><br>
+
+            글을 길게 작성해도 자동으로
+            아래쪽으로 늘어나기 때문에
+            따로 코드를 수정할 필요가 없습니다.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     🌼 FINAL
+====================================================== -->
+
+<section class="final">
+
+    <div class="final-box">
+
+        <h2>
+            Let's meet again.
+        </h2>
+
+        <p>
+
+            마지막으로 하고 싶은 말을 작성해주세요.
+
+            <br>
+
+            이 페이지의 마지막 문구나
+            캐릭터의 한마디를 넣어도 좋아요.
+
+        </p>
+
+        <div class="ribbon">
+            ✦ THE END ✦
+        </div>
+
+    </div>
+
+</section>
+
+
+
+</div>
+
+
+<!-- =====================================================
+     🌼 FOOTER
+====================================================== -->
+
+<footer>
+
+    CHARACTER ARCHIVE · MADE WITH LOVE ♡
+
+</footer>
+
+
+</body>
+</html>
